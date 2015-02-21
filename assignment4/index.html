@@ -10,7 +10,7 @@
 
 <body bgcolor=black>
 <center>
-<td><canvas id='canvas1' width=400 height=400></canvas></td>
+<td><canvas id='canvas1' width=800 height=800></canvas></td>
 </center>
 </body>
 
@@ -89,12 +89,12 @@
 
 
       vec3 originPosition = vec3(.5, .5, 6.);
-      vec3 circlePoint = vec3(gl_FragCoord.x / 400. , gl_FragCoord.y / 400. , 0.);
+      vec3 circlePoint = vec3(gl_FragCoord.x / 800. , gl_FragCoord.y / 800. , 0.);
       vec3 W = normalize(circlePoint - originPosition  );
       vec4 sphere1 = vec4(.25, .5, -6., .2);
       vec4 sphere2 = vec4(.7, .5, 0., .2);
-      vec3 material1 = vec3(.5, .5, .5);
-      vec3 material2 = vec3(.5, .7, 1.);
+      vec3 material1 = vec3(.0, .0, 1.);
+      vec3 material2 = vec3(1., .0, .0);
       vec3 ambient1 = .2 * material1;
       vec3 ambient2 = .2 * material2;
       vec3 diffuse = vec3(.5, .5, .2);
