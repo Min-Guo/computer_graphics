@@ -109,15 +109,19 @@
       vec3 normal2 = normalize((originPosition + W * t2) - sphere2.xyz);
       float N1dotL = dot(normal1, Ldir);
       float N2dotL = dot(normal2, Ldir);
-
-
+      vec3 reflectionVector1 = 2. * normal1 * dot(normal1, Ldir) - Ldir;
+      vec3 reflectionVector2 = 2. * normal2 * dot(normal2, Ldir) - Ldir;
+      vec3 eyeDir = - W;
+      vec3 Srgb = vec3(.5, .5, .5);
+      float EdotR1 = dot(eyeDir, reflectionVector1);
+      float EdotR2 = dot(eyeDir, reflectionVector2);
       if (t1 < t2 ) {
-        color = ambient1 + Lrgb * diffuse * max(0., N1dotL);
+        color = ambient1 + Lrgb * (diffuse * max(0., N1dotL) + Srgb * pow(max(0., EdotR1), 50.));
         // color = material1;
       }
 
       if (t2 < t1 ) {
-        color = ambient2 + Lrgb * diffuse * max(0., N2dotL);
+        color = ambient2 + Lrgb * (diffuse * max(0., N2dotL) + Srgb * pow(max(0., EdotR2), 50.));
         // color = material2;
       }
 
