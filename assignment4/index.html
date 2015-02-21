@@ -92,7 +92,7 @@
       vec3 circlePoint = vec3(gl_FragCoord.x / 800. , gl_FragCoord.y / 800. , 0.);
       vec3 W = normalize(circlePoint - originPosition  );
       vec4 sphere1 = vec4(.25, .5, -6., .2);
-      vec4 sphere2 = vec4(.7, .5, -6., .2);
+      vec4 sphere2 = vec4(.75, .5, -6., .2);
       vec3 material1 = vec3(.0, .0, 1.);
       vec3 material2 = vec3(1., .0, .0);
       vec3 ambient1 = .2 * material1;
@@ -117,7 +117,7 @@
       float EdotR2 = dot(eyeDir, reflectionVector2);
       if (t1 < t2 ) {
         vec3 surfacePoint1 = V + W * t1;
-        float t3 = raySphere(surfacePoint1, - Ldir, sphere2);
+        float t3 = raySphere(surfacePoint1,  Ldir, sphere2);
         if (t3 < 10000.) {
           color = ambient1;
         } else {
@@ -125,7 +125,7 @@
         }
       }
 
-      if (t2 < t1 ) {
+      if (t2 < t1) {
         vec3 surfacePoint2 = V + W * t2;
         float t4 = raySphere(surfacePoint2, - Ldir, sphere1);
         if (t4 < 10000.) {
